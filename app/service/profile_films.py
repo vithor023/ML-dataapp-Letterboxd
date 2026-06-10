@@ -14,13 +14,22 @@ def extraction_movies_tags(html: str, name: str):
 
     except Exception as e:
 
-        print(f'Ocorreu o seguinte erro durante a extração das tags: {e}')
+        msg = str(e)
+        erro = {'Tags extraidas': None,'erro': e }
+        return erro
 
-        return None
+def extraction_number_pages_movie(html: str, name: str):
 
-name = 'yama21'
-page = 1
+    soup = BeautifulSoup(html,'html.parser')
+    try:
 
-html = get_html_user_films(name,page)
-html
-# %%
+        tag_number_page = soup.find_all('li',class_='paginate-page')
+        number_pages  = int(tag_number_page[-1].a.text)
+        return number_pages
+    
+    except Exception as e:
+        msg = str(e)
+        erro = {'Tags extraidas': None,'erro': e }
+        return erro
+
+

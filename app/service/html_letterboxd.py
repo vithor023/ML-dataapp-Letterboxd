@@ -26,8 +26,8 @@ def get_html_user_films(name: str, page_number: int,**kwargs):
 
         return resp
 
-def get_html_film(name: str, **kwargs):
-    url = f'https://letterboxd.com/film/{name}/' 
+def get_html_film(name_sluged: str, **kwargs):
+    url = f'https://letterboxd.com/film/{name_sluged}/genres/' 
     options = Options()
     options.add_argument('--headless')
 
